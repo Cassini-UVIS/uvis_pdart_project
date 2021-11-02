@@ -47,10 +47,10 @@ Date: $date
 """
 )
 
-def main(ids: Optional[List[str]] = typer.Option(None)):
+def main(ids: Optional[List[str]] = typer.Option(None), date: Optional[str] = ''):
 
     # Get the current date
-    date = dt.now().strftime("%Y-%m-%d")
+    date = dt.now().strftime("%Y-%m-%d") if date == '' else date
 
     d = {
         'date': date,
