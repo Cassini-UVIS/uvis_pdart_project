@@ -3,6 +3,7 @@ from datetime import datetime as dt
 import argparse
 import typer
 from typing import List, Optional
+from pathlib import Path
 
 people= {
     'MA': 'Michael Aye',
@@ -60,7 +61,8 @@ def main(ids: Optional[List[str]] = typer.Option(None)):
         d['id{}'.format(i+1)] = id        
 
     s = calib_template.safe_substitute(d)
-    print(s)
+    with Path(f"{date}.md").open('w') as f:
+        f.write(s)
 
 if __name__ == "__main__":
     typer.run(main)
